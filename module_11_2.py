@@ -1,3 +1,6 @@
+from pprint import pprint
+
+
 def introspection_info(obj):
     print(type(obj).__name__)
     print(dir(obj))
@@ -12,4 +15,4 @@ def introspection_info(obj):
 
 
 number_info = introspection_info(42)
-print(number_info)
+pprint(number_info)
