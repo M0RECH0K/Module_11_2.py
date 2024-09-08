@@ -1,18 +1,11 @@
-from pprint import pprint
-
-
 def introspection_info(obj):
-    print(type(obj).__name__)
-    print(dir(obj))
-    print([method for method in dir(obj) if callable(getattr(obj, method))])
-    print(getattr(obj, '__module__', None))
-    return {
-        'type': type(obj),
-        'attributes': dir(obj),
-        'methods': [method for method in dir(obj) if callable(getattr(obj, method))],
-        'module': getattr(obj, '__module__', None)
-    }
+    info = {'type': type(obj).__name__,
+            'attributes': [i for i in dir(obj) if i.startswith('') and not callable(getattr(obj, i))],
+            'methods': [j for j in dir(obj) if j.startswith('')],
+            'module': obj.__class__.__module__}
+    return info
 
 
 number_info = introspection_info(42)
-pprint(number_info)
+print(number_info)
+
